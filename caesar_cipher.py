@@ -15,6 +15,16 @@ def cipher_key(shift):
 def shift_line(line, dict_key):
     new_line = ""
     # Add code here
+    # value from cipher keu
+    dict_key = cipher_key()
+    # takes line from file
+    line = open('alma_mater.txt', 'w')
+    for value in line:
+        value = dict_key
+        value = new_line
+        return new_line
+
+
     return new_line
 
 
