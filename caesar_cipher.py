@@ -1,5 +1,3 @@
-
-
 # Imports
 from string import ascii_uppercase
 
@@ -14,22 +12,39 @@ def cipher_key(shift):
 
 def shift_line(line, dict_key):
     new_line = ""
-    # Add code here
-    # value from cipher keu
-    dict_key = cipher_key()
-    # takes line from file
-    line = open('alma_mater.txt', 'w')
-    for value in line:
-        value = dict_key
-        value = new_line
-        return new_line
+    # goes throuth values in each line. if there is a space then the new line will hve a space in the same position. if there is a new line thene the new line will also have a new line
+    for letter in line:
+        if letter == " ":
+            new_line += " "
+            continue
+        elif letter == "\n":
+            new_line += "\n"
+            continue
+        elif not letter.isalpha():
+            new_line += letter
+            continue
 
+        
+        letter = letter.upper()
+        new_line += dict_key[letter]
 
     return new_line
 
 
 def encrypt_message(filename, dict_key):
-    # Add code here
+    fixed = []
+    final = ""
+    # opens file that user inouts
+    with open(filename) as file:
+        for line in file:
+            #uses encryption from shift line function
+            fixed += shift_line(line,dict_key)
+        for lines in fixed:
+            final = final + lines
+        file = open("encrypted_{}".format(user_file),"w")
+        file.write(final) 
+        file.close()
+
 
 
 # Main
